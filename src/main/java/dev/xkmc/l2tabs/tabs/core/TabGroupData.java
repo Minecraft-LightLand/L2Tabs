@@ -12,6 +12,9 @@ public class TabGroupData<G extends TabGroupData<G>> {
 		this.group = group;
 	}
 
+	public int split() {
+		return -1;
+	}
 
 	public TabGroup<G> getGroup() {
 		return group;

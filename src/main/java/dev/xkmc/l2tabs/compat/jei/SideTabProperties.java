@@ -28,13 +28,15 @@ public record SideTabProperties(TabGroup<?> group) {
 		}
 		int x0 = screen.getGuiLeft();
 		int y0 = screen.getGuiTop();
+		int ex0 = x0 - screen.getLeftExpansion();
 		int x1 = x0 + w;
 		int y1 = y0 + h;
-		int tx = group.type.getTabX(w, 0);
-		int ty = group.type.getTabY(h, 0);
-		x0 += Math.min(tx, 0);
-		y0 += Math.min(ty, 0);
-		x1 = Math.max(x1, x0 + tx + group.type.width);
+		int ex1 = x1 + screen.getRightExpansion();
+		int tx = group.type.getTabX(w, h, 0, -1);
+		int ty = group.type.getTabY(w, h, 0, -1);
+		x0 = Math.min(x0 + tx, ex0);
+		y0 = Math.min(x0 + ty, y0);
+		x1 = Math.max(ex1, x0 + tx + group.type.width);
 		y1 = Math.max(y1, x0 + ty + group.type.height);
 
 		return new GuiProperties(screen.asScreen().getClass(),

@@ -49,34 +49,63 @@ public enum TabType {
 		g.renderItemDecorations(Minecraft.getInstance().font, stack, i, j);
 	}
 
-	public int getX(int pIndex) {
+	public int getX(int w, int h, int index, int split) {
+		int space = split < 0 ? 0 : w % width;
 		return switch (this) {
-			case ABOVE, BELOW -> this.width * pIndex;
-			case LEFT -> -this.width + 4;
-			case RIGHT -> -4;
+			case ABOVE, BELOW -> width * index + (index >= split ? space : 0);
+			case LEFT -> -width + 4;
+			case RIGHT -> w - 4;
 		};
 	}
 
-	public int getY(int pIndex) {
+	public int getY(int w, int h, int index, int split) {
+		int space = split < 0 ? 0 : h % height;
 		return switch (this) {
-			case ABOVE -> -this.height + 4;
-			case BELOW -> -4;
-			case LEFT, RIGHT -> this.height * pIndex;
+			case ABOVE -> -height + 4;
+			case BELOW -> h - 4;
+			case LEFT, RIGHT -> (height + 1) * index + (index >= split ? space : 0);
 		};
 	}
 
+	public boolean isMouseOver(int gx, int gy, int w, int h, int ind, int split, double mx, double my) {
+		int x = gx + getX(w, h, ind, split);
+		int y = gy + getY(w, h, ind, split);
+		return mx > x && mx < x + width && my > y && my < y + height;
+	}
+
+	public int getTabX(int w, int h, int index, int split) {
+		return (this == RIGHT ? w : 0) + getX(w, h, index, split);
+	}
+
+	public int getTabY(int w, int h, int index, int split) {
+		return (this == BELOW ? h : 0) + getY(w, h, index, split);
+	}
+
+	@Deprecated
+	public int getX(int index) {
+		return getX(0, 0, index, -1);
+	}
+
+	@Deprecated
+	public int getY(int index) {
+		return getY(0, 0, index, -1);
+	}
+
+	@Deprecated
 	public boolean isMouseOver(int gx, int gy, int ind, double mx, double my) {
-		int x = gx + this.getX(ind);
-		int y = gy + this.getY(ind);
-		return mx > x && mx < x + this.width && my > y && my < y + this.height;
+		int x = gx + getX(0, 0, ind, -1);
+		int y = gy + getY(0, 0, ind, -1);
+		return mx > x && mx < x + width && my > y && my < y + height;
 	}
 
-	public int getTabX(int imgWidth, int index) {
-		return (this == RIGHT ? imgWidth : 0) + getX(index);
+	@Deprecated
+	public int getTabX(int w, int index) {
+		return getTabX(w, 0, index, -1);
 	}
 
-	public int getTabY(int imgHeight, int index) {
-		return (this == BELOW ? imgHeight : 0) + getY(index);
+	@Deprecated
+	public int getTabY(int h, int index) {
+		return getTabY(0, h, index, -1);
 	}
 
 }

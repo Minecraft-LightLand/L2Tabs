@@ -27,6 +27,12 @@ public class TabManager<G extends TabGroupData<G>> {
 		this.token = token;
 	}
 
+	public void init(Consumer<AbstractWidget> adder, ITabType<G> tab) {
+		var sel = tab.getMapped();
+		if (sel == null || !token.allows(sel)) return;
+		init(adder, sel);
+	}
+
 	public void init(Consumer<AbstractWidget> adder, TabToken<G, ?> selected) {
 		if (!token.shouldRender()) return;
 		TabGroup<G> group = token.getGroup();
@@ -34,8 +40,8 @@ public class TabManager<G extends TabGroupData<G>> {
 		token_list.removeIf(token::shouldHideTab);
 		list.clear();
 		this.selected = selected;
-		int imgWidth = screen.getXSize();
-		int imgHeight = screen.getYSize();
+		int iw = screen.getXSize();
+		int ih = screen.getYSize();
 		int index = 0, order = 0, page = 0;
 
 		for (TabToken<G, ?> token : token_list) {
@@ -46,8 +52,8 @@ public class TabManager<G extends TabGroupData<G>> {
 				tabPage = page;
 			TabBase<G, ?> tab = token.create(order, this);
 			tab.page = page;
-			tab.setXRef(screen::getGuiLeft, group.type.getTabX(imgWidth, order));
-			tab.setYRef(screen::getGuiTop, group.type.getTabY(imgHeight, order));
+			tab.setXRef(screen::getGuiLeft, group.type.getTabX(iw, ih, order, this.token.split()));
+			tab.setYRef(screen::getGuiTop, group.type.getTabY(iw, ih, order, this.token.split()));
 			list.add(tab);
 			adder.accept(tab);
 

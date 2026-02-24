@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class TabGroup<G extends TabGroupData<G>> {
@@ -24,6 +25,13 @@ public class TabGroup<G extends TabGroupData<G>> {
 	public synchronized <T extends TabBase<G, T>> TabToken<G, T> registerTab(Supplier<TabToken.TabFactory<G, T>> sup, Component title) {
 		TabToken<G, T> ans = new TabToken<>(this, sup, title);
 		tokens.add(ans);
+		return ans;
+	}
+
+	public synchronized <T extends TabBase<G, T>, I extends ITabType<G>> TabToken<G, T> registerTab(I tab, Supplier<Function<I, TabToken.TabFactory<G, T>>> sup) {
+		TabToken<G, T> ans = new TabToken<>(this, () -> sup.get().apply(tab), tab.getTitle());
+		tokens.add(ans);
+		tab.reverseMap(ans);
 		return ans;
 	}
 
