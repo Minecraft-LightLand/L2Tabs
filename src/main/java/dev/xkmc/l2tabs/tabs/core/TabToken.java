@@ -33,7 +33,7 @@ public class TabToken<G extends TabGroupData<G>, T extends TabBase<G, T>> {
 	}
 
 	public void draw(GuiGraphics g, int x, int y, boolean selected, int index) {
-		int ind = index == 0 ? 0 : group.enableLast() && index == group.max() ? 2 : 1;
+		int ind = index == 0 ? 0 : group.enableLast() && index == group.max() - 1 ? 2 : 1;
 		getType().draw(group.texture(), g, x, y, selected, ind);
 	}
 
