@@ -58,11 +58,11 @@ public class TabManager<G extends TabGroupData<G>> {
 			adder.accept(tab);
 
 			order++;
-			if (order == group.max() - 1) {
+			index++;
+			if (order == group.max() - 1 && index < token_list.size() - 1) {
 				order = 0;
 				page++;
 			}
-			index++;
 		}
 
 		maxPages = order == 0 ? page : page + 1;
