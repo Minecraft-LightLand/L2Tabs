@@ -50,16 +50,16 @@ public enum TabType {
 	}
 
 	public int getX(int w, int h, int index, int split) {
-		int space = split < 0 ? 0 : w % width;
+		int space = split < 0 ? 0 : (w + 1) % (width + 1);
 		return switch (this) {
-			case ABOVE, BELOW -> width * index + (index >= split ? space : 0);
+			case ABOVE, BELOW -> (width + 1) * index + (index >= split ? space : 0);
 			case LEFT -> -width + 4;
 			case RIGHT -> w - 4;
 		};
 	}
 
 	public int getY(int w, int h, int index, int split) {
-		int space = split < 0 ? 0 : h % height;
+		int space = split < 0 ? 0 : (h + 1) % (height + 1);
 		return switch (this) {
 			case ABOVE -> -height + 4;
 			case BELOW -> h - 4;
