@@ -25,28 +25,28 @@ public enum TabType {
 	}
 
 	public void drawIcon(GuiGraphics g, int x, int y, ItemStack stack) {
-		int i = x;
-		int j = y;
+		int dx = x;
+		int dy = y;
 		switch (this) {
 			case ABOVE -> {
-				i += 5;
-				j += 9;
+				dx += 4;
+				dy += 7;
 			}
 			case BELOW -> {
-				i += 6;
-				j += 6;
+				dx += 4;
+				dy += 4;
 			}
 			case LEFT -> {
-				i += 10;
-				j += 5;
+				dx += 8;
+				dy += 3;
 			}
 			case RIGHT -> {
-				i += 6;
-				j += 5;
+				dx += 6;
+				dy += 4;
 			}
 		}
-		g.renderFakeItem(stack, i, j);
-		g.renderItemDecorations(Minecraft.getInstance().font, stack, i, j);
+		g.renderFakeItem(stack, dx, dy);
+		g.renderItemDecorations(Minecraft.getInstance().font, stack, dx, dy);
 	}
 
 	public int getX(int w, int h, int index, int split) {
@@ -73,14 +73,6 @@ public enum TabType {
 		return mx > x && mx < x + width && my > y && my < y + height;
 	}
 
-	public int getTabX(int w, int h, int index, int split) {
-		return (this == RIGHT ? w : 0) + getX(w, h, index, split);
-	}
-
-	public int getTabY(int w, int h, int index, int split) {
-		return (this == BELOW ? h : 0) + getY(w, h, index, split);
-	}
-
 	@Deprecated
 	public int getX(int index) {
 		return getX(0, 0, index, -1);
@@ -100,12 +92,12 @@ public enum TabType {
 
 	@Deprecated
 	public int getTabX(int w, int index) {
-		return getTabX(w, 0, index, -1);
+		return getX(w, 0, index, -1);
 	}
 
 	@Deprecated
 	public int getTabY(int h, int index) {
-		return getTabY(0, h, index, -1);
+		return getY(0, h, index, -1);
 	}
 
 }

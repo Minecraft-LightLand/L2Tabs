@@ -32,8 +32,8 @@ public record SideTabProperties(TabGroup<?> group) {
 		int x1 = x0 + w;
 		int y1 = y0 + h;
 		int ex1 = x1 + screen.getRightExpansion();
-		int tx = group.type.getTabX(w, h, 0, -1);
-		int ty = group.type.getTabY(w, h, 0, -1);
+		int tx = group.type.getX(w, h, 0, -1);
+		int ty = group.type.getY(w, h, 0, -1);
 		x0 = Math.min(x0 + tx, ex0);
 		y0 = Math.min(x0 + ty, y0);
 		x1 = Math.max(ex1, x0 + tx + group.type.width);

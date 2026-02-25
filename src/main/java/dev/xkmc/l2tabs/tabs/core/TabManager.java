@@ -52,8 +52,8 @@ public class TabManager<G extends TabGroupData<G>> {
 				tabPage = page;
 			TabBase<G, ?> tab = token.create(order, this);
 			tab.page = page;
-			tab.setXRef(screen::getGuiLeft, group.type.getTabX(iw, ih, order, this.token.split()));
-			tab.setYRef(screen::getGuiTop, group.type.getTabY(iw, ih, order, this.token.split()));
+			tab.setXRef(screen::getGuiLeft, group.type.getX(iw, ih, order, this.token.split()));
+			tab.setYRef(screen::getGuiTop, group.type.getY(iw, ih, order, this.token.split()));
 			list.add(tab);
 			adder.accept(tab);
 
