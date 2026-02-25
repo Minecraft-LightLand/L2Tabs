@@ -29,7 +29,7 @@ public enum TabType {
 		int j = y;
 		switch (this) {
 			case ABOVE -> {
-				i += 6;
+				i += 5;
 				j += 9;
 			}
 			case BELOW -> {
