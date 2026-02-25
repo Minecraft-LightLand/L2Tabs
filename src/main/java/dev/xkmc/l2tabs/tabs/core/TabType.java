@@ -30,7 +30,7 @@ public enum TabType {
 		switch (this) {
 			case ABOVE -> {
 				dx += 4;
-				dy += 7;
+				dy += 6;
 			}
 			case BELOW -> {
 				dx += 4;

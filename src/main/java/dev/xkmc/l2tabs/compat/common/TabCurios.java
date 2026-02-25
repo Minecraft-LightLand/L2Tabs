@@ -36,7 +36,7 @@ public class TabCurios extends TabBase<InvTabData, TabCurios> {
 		if (getX() == 0 && getY() == 0) return;
 		if (this.visible) {
 			token.draw(g, getX(), getY(), manager.selected == token, index);
-			g.blitSprite(ICON, getX() + 5, getY() + 8, 14, 14);
+			g.blitSprite(ICON, getX() + 5, getY() + 7, 14, 14);
 		}
 	}
 
