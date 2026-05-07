@@ -9,7 +9,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.DataMapProvider;
-import top.theillusivec4.curios.Curios;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class L2TabsDataMapGen {

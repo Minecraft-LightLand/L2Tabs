@@ -15,11 +15,11 @@ import dev.xkmc.l2tabs.tabs.core.TabToken;
 import dev.xkmc.l2tabs.tabs.inventory.InvTabData;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class TabCurios extends TabBase<InvTabData, TabCurios> {
 
-	private static final ResourceLocation ICON = L2Tabs.loc("curios");
+	private static final Identifier ICON = L2Tabs.loc("curios");
 
 	public TabCurios(int index, TabToken<InvTabData, TabCurios> token,
 					 TabManager<InvTabData> manager, Component title) {

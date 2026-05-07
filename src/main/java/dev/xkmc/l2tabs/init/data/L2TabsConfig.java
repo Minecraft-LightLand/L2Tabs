@@ -2,7 +2,7 @@ package dev.xkmc.l2tabs.init.data;
 
 import dev.xkmc.l2core.util.ConfigInit;
 import dev.xkmc.l2tabs.init.L2Tabs;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.util.Lazy;
 
@@ -43,7 +43,7 @@ public class L2TabsConfig {
 					.defineEnum("attributeSettings", AttrDispEntry.AttributeDisplay.COMMON);
 
 			Lazy<Set<String>> keys = Lazy.of(() -> L2Tabs.TABS.get().keySet().stream()
-					.map(ResourceLocation::getPath)
+					.map(Identifier::getPath)
 					.collect(Collectors.toSet()));
 
 			hiddenTabs = builder.text("Hidden Tabs").comment("List of tabs to hide")

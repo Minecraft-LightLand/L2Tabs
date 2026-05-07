@@ -1,8 +1,4 @@
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+@org.jspecify.annotations.NullMarked
 
 package dev.xkmc.l2tabs.compat.track;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
-
-import javax.annotation.ParametersAreNonnullByDefault;

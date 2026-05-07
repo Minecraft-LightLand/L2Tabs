@@ -44,7 +44,7 @@ public class AccessoriesMultiplexImpl extends AccessoriesMultiplex {
 			var cls = screen.getClass();
 			boolean isCurio = cls.getName().startsWith("top.theillusivec4.curios") ||
 					cls.getName().startsWith("io.wispforest.accessories") &&
-					cls.getSimpleName().equals("AccessoriesScreen");
+							cls.getSimpleName().equals("AccessoriesScreen");
 			boolean onlyCurio = L2TabsConfig.CLIENT.showTabsOnlyCurio.get();
 			return onlyCurio ? isCurio : old.test(screen) || isCurio;
 		};

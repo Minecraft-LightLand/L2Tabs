@@ -17,7 +17,7 @@ import dev.xkmc.l2tabs.tabs.core.TabToken;
 import dev.xkmc.l2tabs.tabs.core.TabType;
 import dev.xkmc.l2tabs.tabs.inventory.InvTabData;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
@@ -75,8 +75,8 @@ public class L2Tabs {
 		event.enqueueWork(() -> TabCuriosCompat.onCommonSetup());
 	}
 
-	public static ResourceLocation loc(String id) {
-		return ResourceLocation.fromNamespaceAndPath(MODID, id);
+	public static Identifier loc(String id) {
+		return Identifier.fromNamespaceAndPath(MODID, id);
 	}
 
 }

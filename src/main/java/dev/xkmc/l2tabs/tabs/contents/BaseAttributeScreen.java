@@ -11,7 +11,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -31,7 +31,7 @@ public abstract class BaseAttributeScreen extends BaseTextScreen {
 	private final int page;
 
 	protected BaseAttributeScreen(Component title, int page) {
-		super(title, ResourceLocation.fromNamespaceAndPath("l2tabs", "textures/gui/empty.png"));
+		super(title, Identifier.fromNamespaceAndPath("l2tabs", "textures/gui/empty.png"));
 		this.page = page;
 	}
 
