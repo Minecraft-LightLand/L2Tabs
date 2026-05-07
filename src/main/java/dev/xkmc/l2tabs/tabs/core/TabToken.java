@@ -1,7 +1,7 @@
 package dev.xkmc.l2tabs.tabs.core;
 
 import dev.xkmc.l2tabs.init.L2Tabs;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 
 import java.util.function.Supplier;
@@ -32,7 +32,7 @@ public class TabToken<G extends TabGroupData<G>, T extends TabBase<G, T>> {
 		return factory.get().create(index, this, manager, title);
 	}
 
-	public void draw(GuiGraphics g, int x, int y, boolean selected, int index) {
+	public void draw(GuiGraphicsExtractor g, int x, int y, boolean selected, int index) {
 		int ind = index == 0 ? 0 : group.enableLast() && index == group.max() - 1 ? 2 : 1;
 		getType().draw(group.texture(), g, x, y, selected, ind);
 	}

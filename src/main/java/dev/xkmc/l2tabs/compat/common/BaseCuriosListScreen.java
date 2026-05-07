@@ -1,14 +1,17 @@
 package dev.xkmc.l2tabs.compat.common;
 
 import dev.xkmc.l2core.base.menu.base.BaseContainerScreen;
+import dev.xkmc.l2core.util.GuiHelper;
 import dev.xkmc.l2tabs.compat.api.INamedSlot;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
+
+import java.util.List;
 
 public class BaseCuriosListScreen<T extends BaseCuriosListMenu<T>> extends BaseContainerScreen<T> {
 
@@ -22,8 +25,8 @@ public class BaseCuriosListScreen<T extends BaseCuriosListMenu<T>> extends BaseC
 		if (topPos < 28) topPos = 28;
 		int w = 10;
 		int h = 11;
-		int x = getGuiLeft() + titleLabelX + font.width(getTitle()) + 14,
-				y = getGuiTop() + 4;
+		int x = getLeftPos() + titleLabelX + font.width(getTitle()) + 14,
+				y = getTopPos() + 4;
 		if (menu.curios.page > 0) {
 			addRenderableWidget(Button.builder(Component.literal("<"), e -> click(1))
 					.pos(x - w - 1, y).size(w, h).build());
@@ -35,7 +38,8 @@ public class BaseCuriosListScreen<T extends BaseCuriosListMenu<T>> extends BaseC
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics g, float pTick, int mx, int my) {
+	public void extractBackground(GuiGraphicsExtractor g, int mx, int my, float pTick) {
+		super.extractBackground(g, mx, my, pTick);
 		var sr = getRenderer();
 		sr.start(g);
 		for (int i = 0; i < menu.curios.getRows() * 9; i++) {
@@ -45,22 +49,16 @@ public class BaseCuriosListScreen<T extends BaseCuriosListMenu<T>> extends BaseC
 	}
 
 	@Override
-	protected void renderLabels(GuiGraphics p_281635_, int p_282681_, int p_283686_) {
-		super.renderLabels(p_281635_, p_282681_, p_283686_);
-	}
-
-	@Override
-	protected void renderTooltip(GuiGraphics g, int mx, int my) {
+	protected void extractTooltip(GuiGraphicsExtractor g, int mx, int my) {
 		LocalPlayer clientPlayer = Minecraft.getInstance().player;
 		if (clientPlayer != null && clientPlayer.inventoryMenu
-				.getCarried().isEmpty() && this.getSlotUnderMouse() != null) {
-			Slot slot = this.getSlotUnderMouse();
-
+				.getCarried().isEmpty() && this.getHoveredSlot() != null) {
+			Slot slot = this.getHoveredSlot();
 			if (slot instanceof INamedSlot slotCurio && !slot.hasItem()) {
-				g.renderTooltip(font, slotCurio.getName(), mx, my);
+				GuiHelper.tooltip(g, List.of(slotCurio.getName()), mx, my);
 			}
 		}
-		super.renderTooltip(g, mx, my);
+		super.extractTooltip(g, mx, my);
 	}
 
 }

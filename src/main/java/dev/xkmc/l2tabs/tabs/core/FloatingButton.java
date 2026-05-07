@@ -1,5 +1,6 @@
 package dev.xkmc.l2tabs.tabs.core;
 
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 
@@ -40,6 +41,12 @@ public class FloatingButton extends Button {
 	@Override
 	public int getY() {
 		return y0.getAsInt() + y1;
+	}
+
+	@Override
+	protected void extractContents(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
+		this.extractDefaultSprite(graphics);
+		this.extractDefaultLabel(graphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.NONE));
 	}
 
 }

@@ -24,11 +24,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.network.PacketDistributor;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.common.CuriosRegistry;
 import top.theillusivec4.curios.common.inventory.CurioSlot;
-import top.theillusivec4.curios.common.inventory.container.CuriosContainer;
+import top.theillusivec4.curios.common.inventory.container.CuriosMenu;
+import top.theillusivec4.curios.common.inventory.container.CuriosMenuProvider;
+import top.theillusivec4.curios.impl.CuriosRegistry;
 
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -76,7 +78,7 @@ public class CuriosMultiplexImpl extends AccessoriesMultiplex {
 			Screen scr = mc.screen;
 			mc.player.containerMenu.setCarried(ItemStack.EMPTY);
 			if (scr instanceof InventoryScreen inventory) {
-				RecipeBookComponent recipeBookGui = inventory.getRecipeBookComponent();
+				RecipeBookComponent recipeBookGui = inventory.recipeBookComponent;
 				if (recipeBookGui.isVisible()) {
 					recipeBookGui.toggleVisibility();
 				}
@@ -87,7 +89,7 @@ public class CuriosMultiplexImpl extends AccessoriesMultiplex {
 
 	private static void serverOpenInventory(ServerPlayer player) {
 		try {
-			var cls = Class.forName("top.theillusivec4.curios.common.inventory.container.CuriosContainerProvider");
+			var cls = Class.forName("top.theillusivec4.curios.common.inventory.container.CuriosMenuProvider");
 			player.openMenu((MenuProvider) cls.getConstructor().newInstance());
 		} catch (Exception ignored) {
 		}
@@ -98,7 +100,7 @@ public class CuriosMultiplexImpl extends AccessoriesMultiplex {
 			var cls = Class.forName("top.theillusivec4.curios.common.network.client.CPacketOpenCurios");
 			var con = cls.getConstructor(ItemStack.class);
 			CustomPacketPayload packet = (CustomPacketPayload) con.newInstance(stack);
-			PacketDistributor.sendToServer(packet);
+			ClientPacketDistributor.sendToServer(packet);
 		} catch (Exception ignored) {
 		}
 	}
@@ -121,7 +123,7 @@ public class CuriosMultiplexImpl extends AccessoriesMultiplex {
 	}
 
 	private Optional<Player> getPlayerFromCurioCont(AbstractContainerMenu menu) {
-		if (menu instanceof CuriosContainer cont) {
+		if (menu instanceof CuriosMenu cont) {
 			return Optional.of(cont.player);
 		}
 		if (menu instanceof CuriosListMenu cont) {

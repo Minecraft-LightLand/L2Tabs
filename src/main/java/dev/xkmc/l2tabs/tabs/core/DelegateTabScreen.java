@@ -7,12 +7,12 @@ public record DelegateTabScreen(AbstractContainerScreen<?> screen) implements IT
 
 	@Override
 	public int getGuiLeft() {
-		return screen.getGuiLeft();
+		return screen.getLeftPos();
 	}
 
 	@Override
 	public int getGuiTop() {
-		return screen.getGuiTop();
+		return screen.getTopPos();
 	}
 
 	@Override
@@ -27,12 +27,12 @@ public record DelegateTabScreen(AbstractContainerScreen<?> screen) implements IT
 
 	@Override
 	public int getXSize() {
-		return screen.getXSize();
+		return screen.getImageWidth();
 	}
 
 	@Override
 	public int getYSize() {
-		return screen.getYSize();
+		return screen.getImageHeight();
 	}
 
 	@Override

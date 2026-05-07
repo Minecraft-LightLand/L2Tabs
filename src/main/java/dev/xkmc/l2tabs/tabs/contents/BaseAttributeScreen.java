@@ -1,13 +1,14 @@
 package dev.xkmc.l2tabs.tabs.contents;
 
 import com.mojang.datafixers.util.Pair;
+import dev.xkmc.l2core.util.GuiHelper;
+import dev.xkmc.l2core.util.TooltipHelper;
 import dev.xkmc.l2tabs.init.data.AttrDispEntry;
 import dev.xkmc.l2tabs.init.data.L2TabsConfig;
 import dev.xkmc.l2tabs.init.data.L2TabsLangData;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -59,12 +60,12 @@ public abstract class BaseAttributeScreen extends BaseTextScreen {
 	protected abstract void click(int nextPage);
 
 	@Override
-	public void render(GuiGraphics g, int mx, int my, float ptick) {
-		super.render(g, mx, my, ptick);
+	public void extractBackground(GuiGraphicsExtractor g, int mx, int my, float ptick) {
+		super.extractBackground(g, mx, my, ptick);
 		render(g, mx, my, ptick, getEntity(), AttrDispEntry.get(getEntity()));
 	}
 
-	public void render(GuiGraphics g, int mx, int my, float ptick, LivingEntity player, List<Pair<Holder<Attribute>, AttrDispEntry>> list) {
+	public void render(GuiGraphicsExtractor g, int mx, int my, float ptick, LivingEntity player, List<Pair<Holder<Attribute>, AttrDispEntry>> list) {
 		int x = leftPos + 8;
 		int y = topPos + 6;
 		Pair<Holder<Attribute>, AttrDispEntry> focus = null;
@@ -77,12 +78,12 @@ public abstract class BaseAttributeScreen extends BaseTextScreen {
 					"attribute.modifier.equals." + (entry.getSecond().usePercent() ? 1 : 0),
 					ATTRIBUTE_MODIFIER_FORMAT.format(entry.getSecond().usePercent() ? val * 100 : val),
 					Component.translatable(entry.getFirst().value().getDescriptionId()));
-			g.drawString(font, comp, x, y, 0, false);
+			g.text(font, comp, x, y, 0, false);
 			if (mx > x && mx < x + font.width(comp) && my > y && my < y + 10) focus = entry;
 			y += 10;
 		}
 		if (focus != null) {
-			g.renderComponentTooltip(font, getAttributeDetail(player, focus), mx, my);
+			GuiHelper.tooltip(g, getAttributeDetail(player, focus), mx, my);
 		}
 	}
 
@@ -120,7 +121,7 @@ public abstract class BaseAttributeScreen extends BaseTextScreen {
 		double total = (base + addv) * (1 + m0v) * m1v;
 		List<Component> ans = new ArrayList<>();
 		ans.add(Component.translatable(attr.value().getDescriptionId()).withStyle(ChatFormatting.GOLD));
-		boolean shift = Screen.hasShiftDown();
+		boolean shift = TooltipHelper.hasShiftDown();
 		ans.add(L2TabsLangData.BASE.get(number("%s", base)).withStyle(ChatFormatting.BLUE));
 		ans.add(L2TabsLangData.ADD.get(numberSigned("%s", addv)).withStyle(ChatFormatting.BLUE));
 		if (shift) {

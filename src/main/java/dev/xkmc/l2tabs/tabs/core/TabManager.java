@@ -1,6 +1,6 @@
 package dev.xkmc.l2tabs.tabs.core;
 
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
@@ -92,7 +92,7 @@ public class TabManager<G extends TabGroupData<G>> {
 		return screen.asScreen();
 	}
 
-	public void onToolTipRender(GuiGraphics stack, int mouseX, int mouseY) {
+	public void onToolTipRender(GuiGraphicsExtractor stack, int mouseX, int mouseY) {
 		for (TabBase<G, ?> tab : list) {
 			if (tab.visible && tab.isHoveredOrFocused()) {
 				tab.onTooltip(stack, mouseX, mouseY);

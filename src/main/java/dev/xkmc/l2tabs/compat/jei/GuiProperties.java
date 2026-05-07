@@ -6,11 +6,11 @@ import mezz.jei.common.platform.Services;
 import mezz.jei.common.util.ImmutableRect2i;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.recipebook.RecipeUpdateListener;
+import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;
 import org.jetbrains.annotations.Nullable;
 
 public record GuiProperties(Class<? extends Screen> screenClass, int guiLeft, int guiTop, int guiXSize, int guiYSize,
-							int screenWidth, int screenHeight) implements IGuiProperties {
+                            int screenWidth, int screenHeight) implements IGuiProperties {
 
 	@Nullable
 	public static GuiProperties create(AbstractContainerScreen<?> containerScreen) {
@@ -22,8 +22,8 @@ public record GuiProperties(Class<? extends Screen> screenClass, int guiLeft, in
 		int y = screenHelper.getGuiTop(containerScreen);
 		int width = screenHelper.getXSize(containerScreen);
 		int height = screenHelper.getYSize(containerScreen);
-		if (containerScreen instanceof RecipeUpdateListener r) {
-			ImmutableRect2i bookArea = screenHelper.getBookArea(r);
+		if (containerScreen instanceof AbstractRecipeBookScreen<?> r) {
+			ImmutableRect2i bookArea = screenHelper.getBookArea(r.recipeBookComponent);
 			if (!bookArea.isEmpty()) {
 				width += (x - bookArea.getX());
 				x = bookArea.getX();

@@ -1,7 +1,8 @@
 package dev.xkmc.l2tabs.tabs.core;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.world.item.ItemStack;
 
 public enum TabType {
@@ -20,11 +21,11 @@ public enum TabType {
 		this.sprite = sprite;
 	}
 
-	public void draw(TabSprites tex, GuiGraphics g, int x, int y, boolean selected, int index) {
-		g.blitSprite(tex.get(index, selected), x, y, tex.w(), tex.h());
+	public void draw(TabSprites tex, GuiGraphicsExtractor g, int x, int y, boolean selected, int index) {
+		g.blitSprite(RenderPipelines.GUI_TEXTURED, tex.get(index, selected), x, y, tex.w(), tex.h());
 	}
 
-	public void drawIcon(GuiGraphics g, int x, int y, ItemStack stack) {
+	public void drawIcon(GuiGraphicsExtractor g, int x, int y, ItemStack stack) {
 		int dx = x;
 		int dy = y;
 		switch (this) {
@@ -45,8 +46,8 @@ public enum TabType {
 				dy += 4;
 			}
 		}
-		g.renderFakeItem(stack, dx, dy);
-		g.renderItemDecorations(Minecraft.getInstance().font, stack, dx, dy);
+		g.item(stack, dx, dy);
+		g.itemDecorations(Minecraft.getInstance().font, stack, dx, dy);
 	}
 
 	public int getX(int w, int h, int index, int split) {

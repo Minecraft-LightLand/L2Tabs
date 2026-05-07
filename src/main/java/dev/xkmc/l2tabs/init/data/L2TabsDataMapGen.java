@@ -10,6 +10,7 @@ import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.CuriosResources;
 
 public class L2TabsDataMapGen {
 
@@ -34,7 +35,7 @@ public class L2TabsDataMapGen {
 				.add(L2Tabs.TAB_INVENTORY.id(), 0, false)
 				.add(L2Tabs.TAB_ATTRIBUTE.id(), 1000, false)
 				.add(AccessoriesMultiplex.TAB_CURIOS.id(), 2000, false,
-						new ModLoadedCondition(CuriosApi.MODID));
+						new ModLoadedCondition(CuriosResources.MOD_ID));
 	}
 
 	public static void add(DataMapProvider.Builder<AttrDispEntry, Attribute> b, Holder<Attribute> attr, int order) {

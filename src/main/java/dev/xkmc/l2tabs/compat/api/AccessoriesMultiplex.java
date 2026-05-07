@@ -7,7 +7,6 @@ import dev.xkmc.l2menustacker.screen.source.MenuSourceRegistry;
 import dev.xkmc.l2menustacker.screen.source.PlayerSlot;
 import dev.xkmc.l2menustacker.screen.track.MenuTraceRegistry;
 import dev.xkmc.l2menustacker.screen.track.TrackedEntry;
-import dev.xkmc.l2tabs.compat.accessories.AccessoriesMultiplexImpl;
 import dev.xkmc.l2tabs.compat.common.*;
 import dev.xkmc.l2tabs.compat.curios.CuriosMultiplexImpl;
 import dev.xkmc.l2tabs.compat.track.*;
@@ -41,9 +40,8 @@ public abstract class AccessoriesMultiplex {
 	public static AccessoriesMultiplex get() {
 		if (INSTANCE == null) {
 			if (ModList.get().isLoaded("curios")) {
-				if (ModList.get().isLoaded("accessories"))
-					INSTANCE = new AccessoriesMultiplexImpl();
-				else INSTANCE = new CuriosMultiplexImpl();
+				//if (ModList.get().isLoaded("accessories")) INSTANCE = new AccessoriesMultiplexImpl();else
+				INSTANCE = new CuriosMultiplexImpl();
 			}
 		}
 		return INSTANCE;

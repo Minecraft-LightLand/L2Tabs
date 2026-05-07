@@ -1,10 +1,12 @@
 package dev.xkmc.l2tabs.tabs.contents;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import dev.xkmc.l2core.util.GuiHelper;
 import dev.xkmc.l2tabs.tabs.core.ITabScreen;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.client.event.ScreenEvent;
@@ -29,22 +31,21 @@ public abstract class BaseTextScreen extends Screen implements ITabScreen {
 	}
 
 	@Override
-	public void renderBackground(GuiGraphics g, int mx, int my, float pt) {
-		this.renderTransparentBackground(g);
-		NeoForge.EVENT_BUS.post(new ScreenEvent.BackgroundRendered(this, g));
-
+	public void extractBackground(GuiGraphicsExtractor g, int mouseX, int mouseY, float a) {
+		this.extractTransparentBackground(g);
 		int i = this.leftPos;
 		int j = this.topPos;
-		g.blit(texture, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		GuiHelper.blit(g, texture, i, j, 0, 0, this.imageWidth, this.imageHeight);
 	}
 
-	public boolean keyPressed(int a, int b, int c) {
-		InputConstants.Key mouseKey = InputConstants.getKey(a, b);
+	@Override
+	public boolean keyPressed(KeyEvent event) {
+		InputConstants.Key mouseKey = InputConstants.getKey(event);
 		if (Minecraft.getInstance().options.keyInventory.isActiveAndMatches(mouseKey)) {
 			this.onClose();
 			return true;
 		}
-		return super.keyPressed(a, b, c);
+		return super.keyPressed(event);
 	}
 
 	@Override

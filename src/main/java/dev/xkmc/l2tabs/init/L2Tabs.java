@@ -29,9 +29,10 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.CuriosResources;
 
 @Mod(L2Tabs.MODID)
-@EventBusSubscriber(modid = L2Tabs.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = L2Tabs.MODID)
 public class L2Tabs {
 
 	public static final String MODID = "l2tabs";
@@ -65,7 +66,7 @@ public class L2Tabs {
 		TabCuriosCompat.onStartup();
 		REGISTRATE.addDataGenerator(ProviderType.LANG, L2TabsLangData::genLang);
 		REGISTRATE.addDataGenerator(ProviderType.DATA_MAP, L2TabsDataMapGen::onDataMapGen);
-		if (ModList.get().isLoaded(CuriosApi.MODID))
+		if (ModList.get().isLoaded(CuriosResources.MOD_ID))
 			NeoForge.EVENT_BUS.register(CuriosEventHandler.class);
 		Attributes.ATTACK_DAMAGE.value().setSyncable(true);
 	}

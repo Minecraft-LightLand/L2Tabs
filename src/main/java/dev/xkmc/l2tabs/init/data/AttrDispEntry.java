@@ -31,8 +31,9 @@ public record AttrDispEntry(boolean usePercent, int order, double intrinsic) {
 			ans.sort(Comparator.comparingInt(e -> e.getSecond().order));
 			int latest = ans.isEmpty() ? 0 : ans.getLast().getSecond().order();
 			var set = ans.stream().map(Pair::getFirst).collect(Collectors.toSet());
-			var all = new ArrayList<>(BuiltInRegistries.ATTRIBUTE.holders().toList());
-			all.sort(Comparator.comparing(e -> e.key().location().toString()));
+			var all = new ArrayList<Holder<Attribute>>();
+			BuiltInRegistries.ATTRIBUTE.asHolderIdMap().forEach(all::add);
+			all.sort(Comparator.comparing(e -> e.getKey().identifier().toString()));
 			for (var e : all) {
 				if (set.contains(e)) continue;
 				var ins = le.getAttribute(e);
