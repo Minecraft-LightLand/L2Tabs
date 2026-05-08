@@ -1,6 +1,6 @@
-// 26.1.2	2026-05-08T10:17:30.068086	Registrate Provider for l2tabs [Registries, Data Maps, , Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Model Definitions - l2tabs, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute)]
+// 26.1.2	2026-05-08T15:47:30.691346	Registrate Provider for l2tabs [Registries, Data Maps, , Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Model Definitions - l2tabs, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute)]
 2d2502d2017a0e0b5f5269ede012b6a445673913 assets/l2tabs/lang/en_ud.json
 63e24bd866f95d5ae46eca0caee3980efbf29e98 assets/l2tabs/lang/en_us.json
-6f5801dde55283db7d77af03bbf92f2e65ce9b3a data/l2tabs/data_maps/attribute/attribute_entry.json
+94c5cb4c21fab97f4f62b367981639a47b2b1133 data/l2tabs/data_maps/attribute/attribute_entry.json
 de8be4523889f5e0c96a0cc930a3126fe840d1a9 data/l2tabs/data_maps/l2tabs/tab/icon.json
 87ab666b54c2ba757a9755ee3701e9cbdfb6aa8c data/l2tabs/data_maps/l2tabs/tab/order.json

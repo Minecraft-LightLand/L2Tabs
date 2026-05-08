@@ -9,23 +9,22 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.DataMapProvider;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.CuriosResources;
 
 public class L2TabsDataMapGen {
 
 	public static void onDataMapGen(RegistrateDataMapProvider pvd) {
 		var b = pvd.builder(L2Tabs.ATTRIBUTE_ENTRY.reg());
-		add(b, Attributes.MAX_HEALTH, 1000);
-		add(b, Attributes.ARMOR, 2000);
-		add(b, Attributes.ARMOR_TOUGHNESS, 3000);
-		add(b, Attributes.KNOCKBACK_RESISTANCE, 4000);
-		add(b, Attributes.MOVEMENT_SPEED, 5000);
-		add(b, Attributes.ATTACK_DAMAGE, 6000);
-		add(b, Attributes.ATTACK_SPEED, 7000);
-		add(b, Attributes.BLOCK_INTERACTION_RANGE, 8000);
-		add(b, Attributes.ENTITY_INTERACTION_RANGE, 9000);
-		add(b, Attributes.LUCK, 10000);
+		add(b, Attributes.MAX_HEALTH, 1000, true);
+		add(b, Attributes.ARMOR, 2000, true);
+		add(b, Attributes.ARMOR_TOUGHNESS, 3000, false);
+		add(b, Attributes.KNOCKBACK_RESISTANCE, 4000, false);
+		add(b, Attributes.MOVEMENT_SPEED, 5000, true);
+		add(b, Attributes.ATTACK_DAMAGE, 6000, true);
+		add(b, Attributes.ATTACK_SPEED, 7000, true);
+		add(b, Attributes.BLOCK_INTERACTION_RANGE, 8000, true);
+		add(b, Attributes.ENTITY_INTERACTION_RANGE, 9000, true);
+		add(b, Attributes.LUCK, 10000, false);
 
 		pvd.builder(L2Tabs.ICON.reg())
 				.add(L2Tabs.TAB_INVENTORY.id(), Items.CRAFTING_TABLE, false)
@@ -38,10 +37,10 @@ public class L2TabsDataMapGen {
 						new ModLoadedCondition(CuriosResources.MOD_ID));
 	}
 
-	public static void add(DataMapProvider.Builder<AttrDispEntry, Attribute> b, Holder<Attribute> attr, int order) {
+	public static void add(DataMapProvider.Builder<AttrDispEntry, Attribute> b, Holder<Attribute> attr, int order, boolean alwaysDisplay) {
 		var rl = attr.unwrapKey();
 		assert rl.isPresent();
-		b.add(rl.get(), new AttrDispEntry(false, order, 0), false);
+		b.add(rl.get(), new AttrDispEntry(false, order, alwaysDisplay), false);
 	}
 
 }

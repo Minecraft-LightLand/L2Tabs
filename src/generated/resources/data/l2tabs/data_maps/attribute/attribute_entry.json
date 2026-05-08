@@ -1,52 +1,52 @@
 {
   "values": {
     "minecraft:armor": {
-      "intrinsic": 0.0,
+      "alwaysDisplay": true,
       "order": 2000,
       "usePercent": false
     },
     "minecraft:armor_toughness": {
-      "intrinsic": 0.0,
+      "alwaysDisplay": false,
       "order": 3000,
       "usePercent": false
     },
     "minecraft:attack_damage": {
-      "intrinsic": 0.0,
+      "alwaysDisplay": true,
       "order": 6000,
       "usePercent": false
     },
     "minecraft:attack_speed": {
-      "intrinsic": 0.0,
+      "alwaysDisplay": true,
       "order": 7000,
       "usePercent": false
     },
     "minecraft:block_interaction_range": {
-      "intrinsic": 0.0,
+      "alwaysDisplay": true,
       "order": 8000,
       "usePercent": false
     },
     "minecraft:entity_interaction_range": {
-      "intrinsic": 0.0,
+      "alwaysDisplay": true,
       "order": 9000,
       "usePercent": false
     },
     "minecraft:knockback_resistance": {
-      "intrinsic": 0.0,
+      "alwaysDisplay": false,
       "order": 4000,
       "usePercent": false
     },
     "minecraft:luck": {
-      "intrinsic": 0.0,
+      "alwaysDisplay": false,
       "order": 10000,
       "usePercent": false
     },
     "minecraft:max_health": {
-      "intrinsic": 0.0,
+      "alwaysDisplay": true,
       "order": 1000,
       "usePercent": false
     },
     "minecraft:movement_speed": {
-      "intrinsic": 0.0,
+      "alwaysDisplay": true,
       "order": 5000,
       "usePercent": false
     }

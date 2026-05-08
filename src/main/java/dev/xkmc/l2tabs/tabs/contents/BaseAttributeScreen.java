@@ -88,12 +88,7 @@ public abstract class BaseAttributeScreen extends BaseTextScreen {
 	}
 
 	public List<Component> getAttributeDetail(LivingEntity entity, Pair<Holder<Attribute>, AttrDispEntry> entry) {
-		var ans = getAttributeDetail(entity, entry.getFirst());
-		if (entry.getSecond().intrinsic() != 0) {
-			ans.add(L2TabsLangData.INTRINSIC.get(number("%s", entry.getSecond().intrinsic()))
-					.withStyle(ChatFormatting.BLUE));
-		}
-		return ans;
+		return getAttributeDetail(entity, entry.getFirst());
 	}
 
 	public List<Component> getAttributeDetail(LivingEntity entity, Holder<Attribute> attr) {

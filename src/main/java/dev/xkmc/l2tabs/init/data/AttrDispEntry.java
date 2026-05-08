@@ -12,7 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public record AttrDispEntry(boolean usePercent, int order, double intrinsic) {
+public record AttrDispEntry(boolean usePercent, int order, boolean alwaysDisplay) {
 
 	public enum AttributeDisplay {
 		COMMON,
@@ -22,7 +22,11 @@ public record AttrDispEntry(boolean usePercent, int order, double intrinsic) {
 
 	public static List<Pair<Holder<Attribute>, AttrDispEntry>> get(LivingEntity le) {
 		var ans = L2Tabs.ATTRIBUTE_ENTRY.getAll(le.level().registryAccess())
-				.filter(e -> le.getAttribute(e.getFirst()) != null)
+				.filter(e -> {
+					var ins = le.getAttribute(e.getFirst());
+					if (ins == null) return false;
+					return e.getSecond().alwaysDisplay || !ins.getModifiers().isEmpty();
+				})
 				.sorted(Comparator.comparingInt(x -> x.getSecond().order))
 				.toList();
 		var disp = L2TabsConfig.CLIENT.attributeSettings.get();
@@ -44,7 +48,7 @@ public record AttrDispEntry(boolean usePercent, int order, double intrinsic) {
 					}
 				}
 				latest++;
-				ans.add(Pair.of(e, new AttrDispEntry(false, latest, 0)));
+				ans.add(Pair.of(e, new AttrDispEntry(false, latest, false)));
 			}
 		}
 		return ans;
