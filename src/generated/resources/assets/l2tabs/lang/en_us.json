@@ -1,6 +1,6 @@
 {
   "l2tabs.configuration.attributeLinePerPage": "Number of attribute lines per page",
-  "l2tabs.configuration.attributeLinePerPage.tooltip": "Range: 1 ~ 100",
+  "l2tabs.configuration.attributeLinePerPage.tooltip": " Default: 15\n Range: 1 ~ 100",
   "l2tabs.configuration.attributeSettings": "Attribute display",
   "l2tabs.configuration.attributeSettings.tooltip": "COMMON: Show only common attributes and L2 attributes\nALL: Show all attributes in attribute type, similar to Apothic Attributes\nALL_EXCEPT_UNCHANGED: Show all, but hide attributes that are unchanged\nAllowed Values: COMMON, ALL, ALL_EXCEPT_UNCHANGED",
   "l2tabs.configuration.hiddenTabs": "Hidden Tabs",

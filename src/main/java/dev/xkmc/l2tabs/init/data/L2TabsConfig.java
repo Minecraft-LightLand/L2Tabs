@@ -40,7 +40,7 @@ public class L2TabsConfig {
 					.comment("COMMON: Show only common attributes and L2 attributes")
 					.comment("ALL: Show all attributes in attribute type, similar to Apothic Attributes")
 					.comment("ALL_EXCEPT_UNCHANGED: Show all, but hide attributes that are unchanged")
-					.defineEnum("attributeSettings", AttrDispEntry.AttributeDisplay.COMMON);
+					.defineEnum("attributeSettings", AttrDispEntry.AttributeDisplay.ALL_EXCEPT_UNCHANGED);
 
 			Lazy<Set<String>> keys = Lazy.of(() -> L2Tabs.TABS.get().keySet().stream()
 					.map(Identifier::getPath)

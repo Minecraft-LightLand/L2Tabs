@@ -1,6 +1,6 @@
 {
   "l2tabs.configuration.attributeLinePerPage": "ǝbɐd ɹǝd sǝuıן ǝʇnqıɹʇʇɐ ɟo ɹǝqɯnN",
-  "l2tabs.configuration.attributeLinePerPage.tooltip": "00Ɩ ~ Ɩ :ǝbuɐᴚ",
+  "l2tabs.configuration.attributeLinePerPage.tooltip": "00Ɩ ~ Ɩ :ǝbuɐᴚ \nϛƖ :ʇןnɐɟǝᗡ ",
   "l2tabs.configuration.attributeSettings": "ʎɐןdsıp ǝʇnqıɹʇʇⱯ",
   "l2tabs.configuration.attributeSettings.tooltip": "ᗡƎ⅁NⱯHƆN∩‾⟘ԀƎƆXƎ‾ꞀꞀⱯ 'ꞀꞀⱯ 'NOWWOƆ :sǝnןɐΛ pǝʍoןןⱯ\npǝbuɐɥɔun ǝɹɐ ʇɐɥʇ sǝʇnqıɹʇʇɐ ǝpıɥ ʇnq 'ןןɐ ʍoɥS :ᗡƎ⅁NⱯHƆN∩‾⟘ԀƎƆXƎ‾ꞀꞀⱯ\nsǝʇnqıɹʇʇⱯ ɔıɥʇodⱯ oʇ ɹɐןıɯıs 'ǝdʎʇ ǝʇnqıɹʇʇɐ uı sǝʇnqıɹʇʇɐ ןןɐ ʍoɥS :ꞀꞀⱯ\nsǝʇnqıɹʇʇɐ ᄅꞀ puɐ sǝʇnqıɹʇʇɐ uoɯɯoɔ ʎןuo ʍoɥS :NOWWOƆ",
   "l2tabs.configuration.hiddenTabs": "sqɐ⟘ uǝppıH",
@@ -16,13 +16,13 @@
   "l2tabs.configuration.title": "uoıʇɐɹnbıɟuoƆ sqɐ⟘ᄅꞀ",
   "l2tabs.title": "sqɐ⟘ᄅꞀ",
   "menu.tabs.attribute": "sǝʇnqıɹʇʇⱯ",
-  "menu.tabs.attribute.add": "%s :uoıʇıppⱯ",
-  "menu.tabs.attribute.base": "%s :ǝnןɐʌ ǝsɐᗺ",
+  "menu.tabs.attribute.add": "%1$s :uoıʇıppⱯ",
+  "menu.tabs.attribute.base": "%1$s :ǝnןɐʌ ǝsɐᗺ",
   "menu.tabs.attribute.detail": "sןıɐʇǝp ʍoɥs oʇ ʇɟıɥS ssǝɹԀ",
-  "menu.tabs.attribute.format": "%s=%sx)%sƖ(x)%s%s(",
-  "menu.tabs.attribute.intrinsic": "%s :ǝnןɐΛ ɔısuıɹʇuI",
-  "menu.tabs.attribute.mult_all": "%s :ןɐʇoʇ ʎןdıʇןnW",
-  "menu.tabs.attribute.mult_base": "%s :ǝsɐᗺ ʎןdıʇןnW",
+  "menu.tabs.attribute.format": "%5$s=%4$sx(%3$sƖ)x(%2$s%1$s)",
+  "menu.tabs.attribute.intrinsic": "%1$s :ǝnןɐΛ ɔısuıɹʇuI",
+  "menu.tabs.attribute.mult_all": "%1$s :ןɐʇoʇ ʎןdıʇןnW",
+  "menu.tabs.attribute.mult_base": "%1$s :ǝsɐᗺ ʎןdıʇןnW",
   "menu.tabs.curios": "soıɹnƆ",
   "menu.tabs.inventory": "ʎɹoʇuǝʌuI"
 }

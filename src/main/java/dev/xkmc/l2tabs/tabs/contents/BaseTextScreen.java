@@ -1,16 +1,14 @@
 package dev.xkmc.l2tabs.tabs.contents;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import dev.xkmc.l2core.util.GuiHelper;
 import dev.xkmc.l2tabs.tabs.core.ITabScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.neoforged.neoforge.client.event.ScreenEvent;
-import net.neoforged.neoforge.common.NeoForge;
 
 public abstract class BaseTextScreen extends Screen implements ITabScreen {
 
@@ -32,10 +30,11 @@ public abstract class BaseTextScreen extends Screen implements ITabScreen {
 
 	@Override
 	public void extractBackground(GuiGraphicsExtractor g, int mouseX, int mouseY, float a) {
-		this.extractTransparentBackground(g);
+		super.extractBackground(g, mouseX, mouseY, a);
 		int i = this.leftPos;
 		int j = this.topPos;
-		GuiHelper.blit(g, texture, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		g.blit(RenderPipelines.GUI_TEXTURED, texture, i, j, 0, 0, imageWidth, imageHeight, 256, 256);
+		//GuiHelper.blit(g, texture, i, j, 0, 0, this.imageWidth, this.imageHeight);
 	}
 
 	@Override

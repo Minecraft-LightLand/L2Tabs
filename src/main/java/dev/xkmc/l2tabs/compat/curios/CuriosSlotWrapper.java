@@ -9,7 +9,7 @@ record CuriosSlotWrapper(LivingEntity player, ICurioStacksHandler cap, int index
 		implements IAccessoriesSlotWrapper {
 
 	public Slot toSlot(int x, int y) {
-		return new TabCurioSlot(player, cap.getStacks(), index, identifier, x, y, cap.getRenders());
+		return new TabCurioSlot(player, cap.getStacks(), index, identifier, x, y);
 	}
 
 }

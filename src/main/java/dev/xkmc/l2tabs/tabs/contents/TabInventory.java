@@ -53,7 +53,7 @@ public class TabInventory extends TabBase<InvTabData, TabInventory> {
 
 	@SubscribeEvent
 	public static void guiPostRenderBG(ScreenEvent.Render.Background event) {
-		renderTabs(event.getGuiGraphics(), event.getScreen());
+		//renderTabs(event.getGuiGraphics(), event.getScreen());
 	}
 
 	public TabInventory(int index, TabToken<InvTabData, TabInventory> token,
