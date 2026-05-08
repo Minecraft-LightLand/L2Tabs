@@ -20,5 +20,4 @@ public abstract class IAccessoriesWrapper {
 	@Nullable
 	public abstract IAccessoriesSlotWrapper getSlotAtPosition(int i);
 
-	public abstract void refresh();
 }

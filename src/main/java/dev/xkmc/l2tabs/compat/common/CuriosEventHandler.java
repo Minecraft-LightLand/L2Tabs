@@ -25,7 +25,6 @@ public class CuriosEventHandler {
 			ICuriosItemHandler cap = entity.getCapability(CuriosCapability.INVENTORY);
 			if (cap != null) cap.getSlots();
 
-
 			for (var player : sl.players()) {
 				if (player.containerMenu instanceof BaseCuriosListMenu<?> menu) {
 					if (menu.curios.entity == entity) {

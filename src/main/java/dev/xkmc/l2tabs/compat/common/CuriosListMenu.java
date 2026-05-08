@@ -6,9 +6,8 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.MenuType;
-import top.theillusivec4.curios.api.type.ICuriosMenu;
 
-public class CuriosListMenu extends BaseCuriosListMenu<CuriosListMenu> implements ICuriosMenu {
+public class CuriosListMenu extends BaseCuriosListMenu<CuriosListMenu> {
 
 	public static CuriosListMenu fromNetwork(MenuType<CuriosListMenu> type, int wid, Inventory plInv, FriendlyByteBuf buf) {
 		int page = buf.readInt();
@@ -22,11 +21,6 @@ public class CuriosListMenu extends BaseCuriosListMenu<CuriosListMenu> implement
 	@Override
 	public void switchPage(ServerPlayer sp, int page) {
 		new CuriosMenuPvd(AccessoriesMultiplex.MT_CURIOS.get(), page).open(sp);
-	}
-
-	@Override
-	public void resetSlots() {
-		curios.refresh();
 	}
 
 }

@@ -56,10 +56,4 @@ class CuriosWrapper extends IAccessoriesWrapper {
 		return list.get(i);
 	}
 
-	@Override
-	public void refresh() {
-		ICuriosItemHandler cap = entity.getCapability(CuriosCapability.INVENTORY);
-		if (cap != null) cap.getSlots();
-	}
-
 }

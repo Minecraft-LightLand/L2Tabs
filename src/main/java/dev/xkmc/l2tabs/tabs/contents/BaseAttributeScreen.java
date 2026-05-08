@@ -60,8 +60,8 @@ public abstract class BaseAttributeScreen extends BaseTextScreen {
 	protected abstract void click(int nextPage);
 
 	@Override
-	public void extractBackground(GuiGraphicsExtractor g, int mx, int my, float ptick) {
-		super.extractBackground(g, mx, my, ptick);
+	public void extractRenderState(GuiGraphicsExtractor g, int mx, int my, float ptick) {
+		super.extractRenderState(g, mx, my, ptick);
 		render(g, mx, my, ptick, getEntity(), AttrDispEntry.get(getEntity()));
 	}
 
@@ -78,7 +78,7 @@ public abstract class BaseAttributeScreen extends BaseTextScreen {
 					"attribute.modifier.equals." + (entry.getSecond().usePercent() ? 1 : 0),
 					ATTRIBUTE_MODIFIER_FORMAT.format(entry.getSecond().usePercent() ? val * 100 : val),
 					Component.translatable(entry.getFirst().value().getDescriptionId()));
-			g.text(font, comp, x, y, 0, false);
+			g.text(font, comp, x, y, 0xff000000, false);
 			if (mx > x && mx < x + font.width(comp) && my > y && my < y + 10) focus = entry;
 			y += 10;
 		}
