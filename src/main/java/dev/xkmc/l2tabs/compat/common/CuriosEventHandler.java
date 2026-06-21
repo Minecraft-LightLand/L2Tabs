@@ -1,6 +1,8 @@
 package dev.xkmc.l2tabs.compat.common;
 
+import dev.xkmc.l2menustacker.init.L2MenuStacker;
 import dev.xkmc.l2menustacker.init.MouseCache;
+import dev.xkmc.l2menustacker.screen.packets.CacheMouseToClient;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -55,7 +57,7 @@ public class CuriosEventHandler {
 		var menu = player.containerMenu;
 		ItemStack stack = menu.getCarried();
 		menu.setCarried(ItemStack.EMPTY);
-		MouseCache.cacheMousePos();
+		L2MenuStacker.PACKET_HANDLER.toClientPlayer(new CacheMouseToClient(), player);
 		run.run();
 		menu = player.containerMenu;
 		menu.setCarried(stack);
