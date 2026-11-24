@@ -35,7 +35,7 @@ public abstract class TabBase<G extends TabGroupData<G>, T extends TabBase<G, T>
 	public void renderBackground(GuiGraphics g) {
 		if (getX() == 0 && getY() == 0) return;
 		if (this.visible) {
-			token.draw(g, getX(), getY(), manager.selected == token, index);
+			token.draw(g, getX(), getY(), manager.selected == token, index, manager.token.center());
 			renderIcon(g);
 		}
 	}

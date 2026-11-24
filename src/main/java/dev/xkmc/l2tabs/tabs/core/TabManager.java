@@ -43,6 +43,12 @@ public class TabManager<G extends TabGroupData<G>> {
 		int iw = screen.getXSize();
 		int ih = screen.getYSize();
 		int index = 0, order = 0, page = 0;
+		int count = token_list.size();
+		int centerOffset = 0;
+		if (token.center() && (group.type == TabType.ABOVE || group.type == TabType.BELOW)) {
+			int perPage = Math.min(count, group.max());
+			centerOffset = (iw - ((group.type.width + 1) * perPage - 1)) / 2;
+		}
 
 		for (TabToken<G, ?> token : token_list) {
 			if (index > 0 && order == 0) {
@@ -52,7 +58,7 @@ public class TabManager<G extends TabGroupData<G>> {
 				tabPage = page;
 			TabBase<G, ?> tab = token.create(order, this);
 			tab.page = page;
-			tab.setXRef(screen::getGuiLeft, group.type.getX(iw, ih, order, this.token.split()));
+			tab.setXRef(screen::getGuiLeft, group.type.getX(iw, ih, order, this.token.split()) + centerOffset);
 			tab.setYRef(screen::getGuiTop, group.type.getY(iw, ih, order, this.token.split()));
 			list.add(tab);
 			adder.accept(tab);

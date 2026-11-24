@@ -33,12 +33,12 @@ public enum TabType {
 				dy += 6;
 			}
 			case BELOW -> {
-				dx += 4;
-				dy += 4;
+				dx += 6;
+				dy += 6;
 			}
 			case LEFT -> {
-				dx += 8;
-				dy += 3;
+				dx += 6;
+				dy += 4;
 			}
 			case RIGHT -> {
 				dx += 6;

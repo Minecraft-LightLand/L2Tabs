@@ -24,6 +24,10 @@ public class TabGroupData<G extends TabGroupData<G>> {
 		return true;
 	}
 
+	public boolean center() {
+		return false;
+	}
+
 	public boolean allows(TabToken<G, ?> tab) {
 		return true;
 	}
